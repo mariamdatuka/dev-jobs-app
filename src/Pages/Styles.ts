@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import background from '../assets/background.png'
+import searchIcon from '../assets/desktop/icon-search.svg'
+
 
 export const Background=styled.div`
    background-image:url(${background});
@@ -64,4 +66,18 @@ export const Wrapper=styled.div`
   align-items:center;
   justify-content:space-between;
 `
-
+export const GridContainer=styled.div`
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  background-color:red;
+  place-items:center;
+`
+export const SearchInput=styled.input`
+  padding: 20px;
+  background-image: url(${searchIcon});
+  background-repeat: no-repeat;
+  background-position: 5px center;
+  background-size: 15px 15px;
+  border: none;
+  height:35px;
+`
