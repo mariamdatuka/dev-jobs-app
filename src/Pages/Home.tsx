@@ -1,5 +1,5 @@
 import React from 'react'
-import { Background,SwitchContainer,SwitchInput,SwitchKnob,Container,Wrapper,GridContainer,SearchInput } from './Styles'
+import { Background,SwitchContainer,SwitchInput,SwitchKnob,Container,Wrapper,GridContainer,SearchInput,GridItem, LocationInput, CheckInput, SearchButton} from './Styles'
 
 const Home = () => {
   return (
@@ -17,16 +17,19 @@ const Home = () => {
       </Container> 
     </Wrapper>
     <GridContainer>
-      <div>
-     
+      <GridItem>
         <SearchInput type='text' placeholder='Filter by title, companies, expertise…'/>
-      </div>
-      <div>
-        item2
-      </div>
-      <div>
-        item3
-      </div>
+      </GridItem>
+      <GridItem>
+        <LocationInput type='text' placeholder='Filter by location'/>
+      </GridItem>
+      <GridItem style={{display:'flex', alignItems:'center', justifyContent:'center',  gap:'15px'}}>
+        <CheckInput>
+            <input type="checkbox" name="checkbox" />
+            <label>Full Time Only</label>
+        </CheckInput>
+        <SearchButton>Search</SearchButton>
+      </GridItem>
     </GridContainer>
   </Background>
     </>
