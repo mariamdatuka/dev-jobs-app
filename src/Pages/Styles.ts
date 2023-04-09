@@ -14,7 +14,6 @@ export const Background=styled.div`
    padding:30px 100px;
    position:relative;
 `
-
 //Switch Toggle
 export const SwitchContainer = styled.label`
   position: relative;

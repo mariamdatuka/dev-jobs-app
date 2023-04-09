@@ -1,4 +1,5 @@
 import React from 'react'
+import Vacancy from '../components/Vacancy'
 import { Background,SwitchContainer,SwitchInput,SwitchKnob,Container,Wrapper,GridContainer,SearchInput,GridItem, LocationInput, CheckInput, SearchButton} from './Styles'
 
 const Home = () => {
@@ -32,6 +33,7 @@ const Home = () => {
       </GridItem>
     </GridContainer>
   </Background>
+  <Vacancy/>
     </>
   )
 }
