@@ -1,8 +1,26 @@
-import React from 'react'
 import Vacancy from '../components/Vacancy'
 import { Background,SwitchContainer,SwitchInput,SwitchKnob,Container,Wrapper,GridContainer,SearchInput,GridItem, LocationInput, CheckInput, SearchButton} from './Styles'
+import { useState } from 'react'
+import data from '../../data.json'
 
 const Home = () => {
+
+const jobsData=data;
+const [job,setJob]=useState<string>('');
+const [location,setLocation]=useState<string>('');
+
+const handleJobInput=(e:any)=>{
+  setJob(e.target.value);
+}
+
+const handleLocationInput=(e:any)=>{
+  setLocation(e.target.value);
+}
+
+const searchJob=()=>{
+  if(job===jobsData.)
+}
+
   return (
     <>
     <Background>
@@ -19,17 +37,17 @@ const Home = () => {
     </Wrapper>
     <GridContainer>
       <GridItem>
-        <SearchInput type='text' placeholder='Filter by title, companies, expertise…'/>
+        <SearchInput value={job} onChange={handleJobInput}type='text' placeholder='Filter by title, companies, expertise…'/>
       </GridItem>
       <GridItem>
-        <LocationInput type='text' placeholder='Filter by location'/>
+        <LocationInput value={location} onChange={handleLocationInput} type='text' placeholder='Filter by location'/>
       </GridItem>
       <GridItem style={{display:'flex', alignItems:'center', justifyContent:'center',  gap:'15px'}}>
         <CheckInput>
             <input type="checkbox" name="checkbox" />
             <label>Full Time Only</label>
         </CheckInput>
-        <SearchButton>Search</SearchButton>
+        <SearchButton onClick={searchJob}>Search</SearchButton>
       </GridItem>
     </GridContainer>
   </Background>
