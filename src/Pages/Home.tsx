@@ -5,20 +5,37 @@ import data from '../../data.json'
 
 const Home = () => {
 
-const jobsData=data;
-const [job,setJob]=useState<string>('');
+
+const [singleJob,setSingleJob]=useState<string>('');
 const [location,setLocation]=useState<string>('');
+const [filteredData, setFilteredData]=useState(data)
 
 const handleJobInput=(e:any)=>{
-  setJob(e.target.value);
+  setSingleJob(e.target.value);
 }
 
 const handleLocationInput=(e:any)=>{
   setLocation(e.target.value);
 }
 
-const searchJob=()=>{
-  if(job===jobsData.)
+const searchJob=(e:React.FormEvent<HTMLFormElement>)=>{
+  e.preventDefault();
+ const filtered=filteredData.filter((job)=>{
+    const companyOrPosition=job.company.toLowerCase().includes(singleJob.toLowerCase())||
+    job.position.toLowerCase().includes(singleJob.toLowerCase());
+    const locationMatch=job.location.toLowerCase().includes(location.toLowerCase());
+
+    if(!singleJob){
+      return locationMatch;
+    }
+    if(!location){
+      return companyOrPosition;
+    }
+    return companyOrPosition && locationMatch;
+ });
+  setFilteredData(filtered);
+  setSingleJob('');
+  setLocation('');
 }
 
   return (
@@ -35,9 +52,10 @@ const searchJob=()=>{
         <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M6 0c1.516 0 2.925.566 3.978 1.523A3.979 3.979 0 008 1a4.014 4.014 0 00-2.821 1.179A3.927 3.927 0 004 5c0 1.095.463 2.105 1.179 2.821A3.927 3.927 0 008 9a4.034 4.034 0 003.974-3.548c.017.18.026.364.026.548a6.02 6.02 0 01-1.768 4.232A6.02 6.02 0 016 12a5.89 5.89 0 01-4.232-1.768A6.02 6.02 0 010 6a5.89 5.89 0 011.768-4.232A6.02 6.02 0 016 0z" fill="#FFF" fill-rule="nonzero"/></svg>
       </Container> 
     </Wrapper>
-    <GridContainer>
+    <form onSubmit={searchJob}>
+     <GridContainer>
       <GridItem>
-        <SearchInput value={job} onChange={handleJobInput}type='text' placeholder='Filter by title, companies, expertise…'/>
+        <SearchInput value={singleJob} onChange={handleJobInput}type='text' placeholder='Filter by title, companies, expertise…'/>
       </GridItem>
       <GridItem>
         <LocationInput value={location} onChange={handleLocationInput} type='text' placeholder='Filter by location'/>
@@ -47,11 +65,12 @@ const searchJob=()=>{
             <input type="checkbox" name="checkbox" />
             <label>Full Time Only</label>
         </CheckInput>
-        <SearchButton onClick={searchJob}>Search</SearchButton>
+        <SearchButton type='submit'>Search</SearchButton>
       </GridItem>
-    </GridContainer>
+     </GridContainer>
+    </form>
   </Background>
-  <Vacancy/>
+  <Vacancy filteredData={filteredData}/>
     </>
   )
 }
