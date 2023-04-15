@@ -4,7 +4,7 @@ import {RouterProvider, createRoutesFromElements, Route, createBrowserRouter} fr
 import JobDetails from './Pages/Details/JobDetails'
 import Root from './Pages/Root'
 import { useState } from 'react'
-import data from '../data.json'
+import data from './data.json'
 import {Job} from './Types'
 
 function App() {

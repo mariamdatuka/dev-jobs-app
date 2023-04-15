@@ -1,5 +1,4 @@
-import { Fieldset } from './Styles';
-import icon from '../assets/desktop/icon-location.svg'
+import { Fieldset,GridContainer } from './Styles';
 import { useNavigate } from 'react-router-dom';
 import {Job} from '../Types'
 
@@ -14,21 +13,24 @@ const Vacancy = ({filteredData}:Data) => {
   }
   return (
     <>
+    <GridContainer>
     {
       filteredData.map((job)=>(
+
         <Fieldset key={job.id}>
         <legend>
-          <img src={icon} alt='icon'/>
+          <img src={job.logo} alt='icon'/>
         </legend>
-        <div>
-           <p>{job.postedAt} <span>{job.contract}</span></p>
+        <div style={{display:'flex', flexDirection:'column', gap:'10px'}}>
+           <p>{job.postedAt}. <span>{job.contract}</span></p>
            <button onClick={()=>jobNavigate(job.id)}><h3>{job.position}</h3></button> 
-           <h4>{job.company}</h4>
+           <p>{job.company}</p>
            <h5>{job.location}</h5>
         </div>
       </Fieldset>
       ))
     }
+    </GridContainer>
     </>
   )
 }
