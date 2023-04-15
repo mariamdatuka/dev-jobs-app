@@ -1,13 +1,16 @@
 import Vacancy from '../components/Vacancy'
 import {GridContainer,SearchInput,GridItem, LocationInput, CheckInput, SearchButton} from './Styles'
 import { useState } from 'react'
-import data from '../../data.json'
-import Header from '../components/Header/Header'
+import {Job} from '../Types'
 
-const Home = () => {
+interface Props{
+  filteredData:Job[],
+  setFilteredData: (data: Job[]) => void;
+}
+
+const Home = ({filteredData, setFilteredData}:Props) => {
 const [singleJob,setSingleJob]=useState<string>('');
 const [location,setLocation]=useState<string>('');
-const [filteredData, setFilteredData]=useState(data);
 const [checked, setChecked]=useState<boolean>(false);
 
 const handleJobInput=(e: React.ChangeEvent<HTMLInputElement>)=>{
@@ -20,7 +23,7 @@ const handleLocationInput=(e: React.ChangeEvent<HTMLInputElement>)=>{
 
 const searchJob=(e:React.FormEvent<HTMLFormElement>)=>{
   e.preventDefault();
- const filtered=filteredData.filter((job)=>{
+ const filtered=filteredData.filter((job:any)=>{
     const companyOrPosition=job.company.toLowerCase().includes(singleJob.toLowerCase())||
     job.position.toLowerCase().includes(singleJob.toLowerCase());
     const locationMatch=job.location.toLowerCase().includes(location.toLowerCase());
@@ -59,7 +62,7 @@ const searchJob=(e:React.FormEvent<HTMLFormElement>)=>{
       </GridItem>
      </GridContainer>
     </form>
-  <Vacancy filteredData={filteredData}/>
+   <Vacancy filteredData={filteredData}/>
     </>
   )
 }

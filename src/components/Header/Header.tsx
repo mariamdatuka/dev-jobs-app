@@ -1,4 +1,3 @@
-import React from 'react'
 import { Background,Wrapper,Container,SwitchContainer,SwitchInput,SwitchKnob } from './Styles'
 
 const Header = () => {

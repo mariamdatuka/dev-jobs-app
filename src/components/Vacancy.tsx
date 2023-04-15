@@ -1,10 +1,10 @@
-import React from 'react'
 import { Fieldset } from './Styles';
 import icon from '../assets/desktop/icon-location.svg'
 import { useNavigate } from 'react-router-dom';
+import {Job} from '../Types'
 
 interface Data{
-  filteredData:any
+  filteredData:Job[]
 }
 
 const Vacancy = ({filteredData}:Data) => {
@@ -15,13 +15,13 @@ const Vacancy = ({filteredData}:Data) => {
   return (
     <>
     {
-      filteredData.map((job:any)=>(
+      filteredData.map((job)=>(
         <Fieldset key={job.id}>
         <legend>
           <img src={icon} alt='icon'/>
         </legend>
         <div>
-           <p>{job.postehdAt} <span>{job.contract}</span></p>
+           <p>{job.postedAt} <span>{job.contract}</span></p>
            <button onClick={()=>jobNavigate(job.id)}><h3>{job.position}</h3></button> 
            <h4>{job.company}</h4>
            <h5>{job.location}</h5>
@@ -29,7 +29,6 @@ const Vacancy = ({filteredData}:Data) => {
       </Fieldset>
       ))
     }
-
     </>
   )
 }
