@@ -1,6 +1,7 @@
 import { Fieldset,GridContainer } from './Styles';
 import { useNavigate } from 'react-router-dom';
 import {Job} from '../Types'
+import icon from '../assets/logos/scoot.svg'
 
 interface Data{
   filteredData:Job[]
@@ -19,7 +20,7 @@ const Vacancy = ({filteredData}:Data) => {
 
         <Fieldset key={job.id}>
         <legend>
-          <img src={job.logo} alt='icon'/>
+          <img src={icon} alt='icon'/>
         </legend>
         <div style={{display:'flex', flexDirection:'column', gap:'10px'}}>
            <p>{job.postedAt}. <span>{job.contract}</span></p>

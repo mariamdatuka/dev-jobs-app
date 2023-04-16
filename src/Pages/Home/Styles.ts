@@ -1,20 +1,39 @@
 import styled from "styled-components";
-import background from '../assets/background.png'
-import searchIcon from '../assets/desktop/icon-search.svg'
-import locationIcon from '../assets/desktop/icon-location.svg'
+import searchIcon from '../../assets/desktop/icon-search.svg'
+import locationIcon from '../../assets/desktop/icon-location.svg'
+import icon from '../../assets/light.png';
+
 
 //SEARCH INPUTS
+export const Form=styled.form`
+  display:flex;
+  align-items:center;
+  justify-content:center;
+`
 export const GridContainer=styled.div`
   display:grid;
   grid-template-columns:1.5fr 1fr 1fr;
   background-color:#FFF;
-  position:absolute;
+  border-radius:8px;
+
+  &>div:last-child{
+    display:flex;
+    align-items:center;
+    gap:15px;
+  }
+  @media screen and (max-width:940px){
+    grid-template-columns:1fr 1fr 1fr;
+    place-items:center;
+  }
+  @media screen and (max-width:599px){
+    display:none;
+  }
 `
 export const GridItem=styled.div`
  position:relative;
  padding:0 10px;
 
- &::after {
+ &:not(:last-child)::after{
   content: '';
   position: absolute;
   top: 0;
@@ -41,6 +60,15 @@ export const SearchInput=styled.input`
   padding-left:5px;
   font-family: 'Kumbh Sans', sans-serif;
 }
+
+@media screen and (max-width:899px){
+    width:200px;
+ }
+@media screen and (max-width:599px){
+  background-image:url(${icon});
+  width:230px;
+  border-radius:8px;
+}
 `
 export const LocationInput=styled.input`
   padding:20px 20px 20px 25px;
@@ -59,10 +87,14 @@ export const LocationInput=styled.input`
   padding-left:5px;
   font-family: 'Kumbh Sans', sans-serif;
 }
+
+@media screen and (max-width:899px){
+    width:200px;
+ }
 `
 export const CheckInput=styled.div`
  display:flex;
- align-items:center;
+ align-items:flex-start;
  gap:5px;
   & label {
     font-size:14px;
@@ -92,4 +124,14 @@ export const SearchButton=styled.button`
   &:hover{
     background-color:#939BF4;
   }
+
+  @media screen and (max-width:899px){
+    width:70px;
+ }
+`
+///////////////Mobile
+export const Mobile=styled.div`
+ @media screen and (min-width:599px){
+  display:none;
+ }
 `

@@ -1,7 +1,7 @@
-import Vacancy from '../components/Vacancy'
-import {GridContainer,SearchInput,GridItem, LocationInput, CheckInput, SearchButton} from './Styles'
+import Vacancy from '../../components/Vacancy'
+import {GridContainer,SearchInput,GridItem, LocationInput, CheckInput, SearchButton,Form,Mobile} from './Styles'
 import { useState } from 'react'
-import {Job} from '../Types'
+import {Job} from '../../Types'
 
 interface Props{
   filteredData:Job[],
@@ -45,7 +45,7 @@ const searchJob=(e:React.FormEvent<HTMLFormElement>)=>{
 
   return (
     <>
-    <form onSubmit={searchJob}>
+    <Form onSubmit={searchJob}>
      <GridContainer>
       <GridItem>
         <SearchInput value={singleJob} onChange={handleJobInput}type='text' placeholder='Filter by title, companies, expertise…'/>
@@ -53,15 +53,18 @@ const searchJob=(e:React.FormEvent<HTMLFormElement>)=>{
       <GridItem>
         <LocationInput value={location} onChange={handleLocationInput} type='text' placeholder='Filter by location'/>
       </GridItem>
-      <GridItem style={{display:'flex', alignItems:'center', justifyContent:'center',  gap:'15px'}}>
+      <GridItem>
         <CheckInput>
             <input type="checkbox" name="checkbox" checked={checked} onChange={e => setChecked(e.target.checked)}/>
-            <label>Full Time Only</label>
+            <label>Full Time</label>
         </CheckInput>
         <SearchButton type='submit'>Search</SearchButton>
       </GridItem>
      </GridContainer>
-    </form>
+     <Mobile>
+        <SearchInput value={singleJob} onChange={handleJobInput}type='text' placeholder='Filter by title, companies, expertise…'/>
+      </Mobile>
+    </Form>
    <Vacancy filteredData={filteredData}/>
     </>
   )

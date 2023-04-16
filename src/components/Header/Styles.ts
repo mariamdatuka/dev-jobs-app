@@ -9,7 +9,13 @@ export const Background=styled.div`
    background-repeat: no-repeat;
    background-size: cover;
    padding:30px 100px;
-   position:relative;
+   & h2{
+    color:#fff;
+   }
+
+   @media screen and (max-width:499px){
+    padding:30px 50px;
+   }
 `
 //Switch Toggle
 export const SwitchContainer = styled.label`

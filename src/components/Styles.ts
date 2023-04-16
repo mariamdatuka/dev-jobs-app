@@ -11,6 +11,10 @@ export const Fieldset=styled.fieldset`
  border:none;
  border-radius:8px;
 
+ & img{
+    background-color:red;
+ }
+
  & p{
     color:#6E8098;
     font-size:12px;
@@ -35,4 +39,11 @@ export const GridContainer=styled.div`
    display:grid;
    grid-template-columns:repeat(3, 1fr);
    place-items:center;
+
+   @media screen and (max-width:999px){
+      grid-template-columns:repeat(2, 1fr);
+   }
+   @media screen and (max-width:599px){
+      grid-template-columns:1fr;
+   }
 `
