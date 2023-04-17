@@ -2,6 +2,8 @@ import Vacancy from '../../components/Vacancy'
 import {GridContainer,SearchInput,GridItem, LocationInput, CheckInput, SearchButton,Form,Mobile} from './Styles'
 import { useState } from 'react'
 import {Job} from '../../Types'
+import {themeContext} from '../../App'
+import { useContext } from 'react'
 
 interface Props{
   filteredData:Job[],
@@ -12,6 +14,8 @@ const Home = ({filteredData, setFilteredData}:Props) => {
 const [singleJob,setSingleJob]=useState<string>('');
 const [location,setLocation]=useState<string>('');
 const [checked, setChecked]=useState<boolean>(false);
+
+const {isDark}=useContext(themeContext);
 
 const handleJobInput=(e: React.ChangeEvent<HTMLInputElement>)=>{
   setSingleJob(e.target.value);
@@ -46,15 +50,15 @@ const searchJob=(e:React.FormEvent<HTMLFormElement>)=>{
   return (
     <>
     <Form onSubmit={searchJob}>
-     <GridContainer>
+     <GridContainer isDark={isDark}>
       <GridItem>
-        <SearchInput value={singleJob} onChange={handleJobInput}type='text' placeholder='Filter by title, companies, expertise…'/>
+        <SearchInput isDark={isDark} value={singleJob} onChange={handleJobInput}type='text' placeholder='Filter by title, companies, expertise…'/>
       </GridItem>
       <GridItem>
-        <LocationInput value={location} onChange={handleLocationInput} type='text' placeholder='Filter by location'/>
+        <LocationInput isDark={isDark} value={location} onChange={handleLocationInput} type='text' placeholder='Filter by location'/>
       </GridItem>
       <GridItem>
-        <CheckInput>
+        <CheckInput isDark={isDark}>
             <input type="checkbox" name="checkbox" checked={checked} onChange={e => setChecked(e.target.checked)}/>
             <label>Full Time</label>
         </CheckInput>
@@ -62,7 +66,7 @@ const searchJob=(e:React.FormEvent<HTMLFormElement>)=>{
       </GridItem>
      </GridContainer>
      <Mobile>
-        <SearchInput value={singleJob} onChange={handleJobInput}type='text' placeholder='Filter by title, companies, expertise…'/>
+        <SearchInput isDark={isDark} value={singleJob} onChange={handleJobInput}type='text' placeholder='Filter by title, companies, expertise…'/>
       </Mobile>
     </Form>
    <Vacancy filteredData={filteredData}/>

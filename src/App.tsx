@@ -1,6 +1,6 @@
 import React, { createContext } from 'react'
 import Home from './Pages/Home/Home'
-import { GlobalStyles } from './GlobalStyles'
+import  {GlobalStyles}  from './GlobalStyles'
 import {RouterProvider, createRoutesFromElements, Route, createBrowserRouter} from 'react-router-dom'
 import JobDetails from './Pages/Details/JobDetails'
 import Root from './Pages/Root'
@@ -10,7 +10,7 @@ import {Job} from './Types'
 
 interface themeType{
   isDark:boolean;
-  handleToggle:()=>void;
+  handleToggle?:()=>void;
 }
 
 export const themeContext=createContext<themeType>({}as themeType);
@@ -37,7 +37,7 @@ function App() {
     <>
      <themeContext.Provider value={{isDark,handleToggle}}>
       <RouterProvider router={router}/>
-      <GlobalStyles/>
+      <GlobalStyles isDark={isDark}/>
       </themeContext.Provider>
     </>
   )

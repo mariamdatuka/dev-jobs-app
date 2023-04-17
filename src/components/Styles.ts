@@ -1,15 +1,18 @@
 import styled from "styled-components";
 
+interface Props{
+   isDark:boolean;
+}
 
-export const Fieldset=styled.fieldset`
+export const Fieldset=styled.fieldset<Props>`
  width:300px;
  height:200px;
  padding:20px;
  margin-left:20px;
  margin-top:30px;
- background-color:#fff;
  border:none;
  border-radius:8px;
+ background-color: ${props => props.isDark ? '#19202D' : '#fff'};
 
  & img{
     background-color:red;
@@ -27,7 +30,7 @@ export const Fieldset=styled.fieldset`
   }
  & button{
     border:none;
-    color: #6E8098;
+    color:${props=>props.isDark?'#fff':'#6E8098'};
     background:none;
     font-family:inherit;
     font-size:16px;
@@ -39,7 +42,6 @@ export const GridContainer=styled.div`
    display:grid;
    grid-template-columns:repeat(3, 1fr);
    place-items:center;
-
    @media screen and (max-width:999px){
       grid-template-columns:repeat(2, 1fr);
    }

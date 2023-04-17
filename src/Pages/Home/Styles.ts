@@ -3,6 +3,9 @@ import searchIcon from '../../assets/desktop/icon-search.svg'
 import locationIcon from '../../assets/desktop/icon-location.svg'
 import icon from '../../assets/light.png';
 
+interface Props{
+  isDark:boolean
+}
 
 //SEARCH INPUTS
 export const Form=styled.form`
@@ -10,10 +13,10 @@ export const Form=styled.form`
   align-items:center;
   justify-content:center;
 `
-export const GridContainer=styled.div`
+export const GridContainer=styled.div<Props>`
   display:grid;
   grid-template-columns:1.5fr 1fr 1fr;
-  background-color:#FFF;
+  background-color: ${props => props.isDark ? '#19202D' : '#fff'};
   border-radius:8px;
 
   &>div:last-child{
@@ -43,7 +46,7 @@ export const GridItem=styled.div`
   background-color: #ccc;
 }
 `
-export const SearchInput=styled.input`
+export const SearchInput=styled.input<Props>`
   padding:20px 20px 20px 25px;
   background-image: url(${searchIcon});
   background-repeat: no-repeat;
@@ -52,6 +55,7 @@ export const SearchInput=styled.input`
   border: none;
   height:50px;
   width:300px;
+  background-color: ${props => props.isDark ? '#19202D' : '#fff'};
 
   &:focus {
   outline: none;
@@ -70,7 +74,7 @@ export const SearchInput=styled.input`
   border-radius:8px;
 }
 `
-export const LocationInput=styled.input`
+export const LocationInput=styled.input<Props>`
   padding:20px 20px 20px 25px;
   background-image: url(${locationIcon});
   background-repeat: no-repeat;
@@ -79,6 +83,7 @@ export const LocationInput=styled.input`
   border: none;
   height:50px;
   width:300px;
+  background-color: ${props => props.isDark ? '#19202D' : '#fff'};
 
   &:focus {
   outline: none;
@@ -92,12 +97,13 @@ export const LocationInput=styled.input`
     width:200px;
  }
 `
-export const CheckInput=styled.div`
+export const CheckInput=styled.div<Props>`
  display:flex;
  align-items:flex-start;
  gap:5px;
   & label {
     font-size:14px;
+    color: ${props => props.isDark ? '#fff' : '#19202D'};
   }
   & input[type="checkbox"] {
     width: 15px;
