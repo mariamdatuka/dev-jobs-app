@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import searchIcon from '../../assets/desktop/icon-search.svg'
-import locationIcon from '../../assets/desktop/icon-location.svg'
-import icon from '../../assets/light.png';
+import searchIcon from '../../../public/assets/desktop/icon-search.svg'
+import locationIcon from '../../../public/assets/desktop/icon-location.svg'
+import icon from '../../../public/assets/light.png';
 
 interface Props{
   isDark:boolean

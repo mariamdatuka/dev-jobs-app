@@ -1,7 +1,6 @@
 import { Fieldset,GridContainer } from './Styles';
 import { useNavigate } from 'react-router-dom';
 import {Job} from '../Types'
-import icon from '../assets/logos/scoot.svg'
 import { useContext } from 'react';
 import {themeContext} from '../App'
 
@@ -23,7 +22,7 @@ const Vacancy = ({filteredData}:Data) => {
       filteredData.map((job)=>(
         <Fieldset key={job.id} isDark={isDark}>
         <legend>
-          <img src={icon} alt='icon'/>
+          <img src={job.logo} alt='icon'/>
         </legend>
         <div style={{display:'flex', flexDirection:'column', gap:'10px'}}>
            <p>{job.postedAt}. <span>{job.contract}</span></p>
